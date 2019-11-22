@@ -9,6 +9,49 @@
 <body>
     <!-- prepare a DOM container with width and height -->
     <div id="main" style="width: 600px;height:400px;"></div>
+
+
+
+    <h1>les livres</h1><br>
+    <h2>{{ difference }}</h2>
+    <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">NOM LIVRE</th>
+            </tr>
+          </thead>
+          <tbody>
+              
+            {% for item in livre %}
+            {% if forloop.first %}
+            <tr>
+              <th scope="row">1</th>
+              <td>{{ item.name }}</td>
+            </tr>
+            {% endif %}
+            {% if forloop.counter <= 99 %}
+            <tr>
+                <th scope="row">{{ forloop.counter|add:'1' }}</th>
+                <td>{{ item.name}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    
+
+
+
+
+
+
+
+
+
     <script type="text/javascript">
         // based on prepared DOM, initialize echarts instance
         var myChart = echarts.init(document.getElementById('main'));
